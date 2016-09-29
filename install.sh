@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clone out
-git clone --recursive git@github.com:rezonanc-oxid/brew.git $HOME/homebrew
+git clone --recursive git@github.com:rezonanc-oxid/brew.git --branch current $HOME/homebrew
 git clone --recursive git@github.com:rezonanc-oxid/dotfiler.git $HOME/.dotfiler
 git clone git@github.com:rezonanc-oxid/oh-my-zsh.git $HOME/.oh-my-zsh
 
