@@ -1,16 +1,22 @@
 #!/bin/bash
 
 # Clone out
-git clone --recursive git@github.com:rezonanc-oxid/brew.git --branch current $HOME/homebrew
+git clone git@github.com:rezonanc-oxid/brew.git $HOME/brew
 git clone --recursive git@github.com:rezonanc-oxid/dotfiler.git $HOME/.dotfiler
 git clone git@github.com:rezonanc-oxid/oh-my-zsh.git $HOME/.oh-my-zsh
 
 # Install packages
-$HOME/homebrew/bin/brew install `cat $HOME/homebrew/installed`
-$HOME/homebrew/bin/pip install -r $HOME/homebrew/pip-installed
-$HOME/homebrew/npm-installed.sh
+CWD=`pwd`
+cd $HOME/brew
+./install.sh
+cd $CWD
 
-PATH=$PATH:$HOME/homebrew/bin:$HOME/.dotfiler/bin
+$HOME/brew/bin/pip install -r ./pip-installed
+./npm-installed.sh
+
+PATH=$PATH:$HOME/.dotfiler/bin
 dot update
 
-populate_bin_overrides.sh
+mkdir -p ~/.config/
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
